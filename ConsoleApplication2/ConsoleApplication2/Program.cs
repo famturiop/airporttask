@@ -7,23 +7,63 @@
         int speed = 0;
         int fuel = 0;
         int fuelpersec = 0;
+        int maxfuel = 700;
+        int height = 0;
+        int maxheight = 900;
         
         public cl(int startfuel)        
         {
             fuel = startfuel;              
             Console.WriteLine("Диспетчерская.");
         }
-        public void start()       
+        public void getfuel()       
         {
-            if (fuel > 0) do 
+            fuel = maxfuel;
+        public void morespeed(int a)
+        {
+            if speed + a < maxspeed 
             {
-                Console.WriteLine("Все системы запущены. Производится процедура взлета.");
+                speed = speed + a;
             }
             else
             {
-                Console.WriteLine("Отказ на взлет. Нету топлива.");
+                Console.WriteLine("Нельзя увеличить скорость на данное значение, превышает макс. скорость.");
             }
-                       
+        }
+        public void lessspeed(int a)
+        {
+            if speed - a > 0 
+            {
+                speed = speed + a;
+            }
+            else
+            {
+                speed = 0;
+            }
+        }
+        public void moreheight(int a)
+        {
+            if height + a < maxspeed 
+            {
+                height = height + a;
+            }
+            else
+            {
+                Console.WriteLine("Нельзя увеличить высоту на данное значение, превышает макс. высоту.");
+            }
+        }
+        public void lessheight(int a)
+        {
+            if height - a > 0 
+            {
+                height = height + a;
+            }
+            else
+            {
+                height = 0;
+                Console.WriteLine("Самолет разбился.");
+            }
+        }
     }
     class Program  //базовый класс
     {
