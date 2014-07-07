@@ -34,11 +34,16 @@
         {
             if speed - a > 0 
             {
-                speed = speed + a;
+                speed = speed - a;
             }
             else
             {
                 speed = 0;
+            }
+            if speed < maxspeed*0,1
+            {
+                height = 0;
+                Console.WriteLine("Слишком низкая скорость. Самолет упал и разбился =\.");
             }
         }
         public void moreheight(int a)
@@ -60,8 +65,16 @@
             }
             else
             {
-                height = 0;
-                Console.WriteLine("Самолет разбился.");
+                if speed > maxspeed*0,5
+                {
+                    height = 0;
+                    Console.WriteLine("Самолет разбился.");
+                }
+                else
+                {
+                    height = 0;
+                    Console.WriteLine("Самолет приземлился.");
+                }
             }
         }
     }
