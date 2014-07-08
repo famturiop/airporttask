@@ -26,6 +26,7 @@ namespace обучалка
         {
             fuel = startfuel;
             Console.WriteLine("Диспетчерская. Система управления самолетами.");
+            
         }
         public void getfuel()  // заправка     
         {
@@ -119,7 +120,7 @@ namespace обучалка
                 CreatePlane(i);                         //
             }                                           //
         }
-        public static void RespawnPlane(int n)         //метод для респауна самолётов. вызывается при взрыве и тд. передаётся индекс объекта, который требуется заменить
+        static void RespawnPlane(int n)         //метод для респауна самолётов. вызывается при взрыве и тд. передаётся индекс объекта, который требуется заменить
         {
             CreatePlane(n);
             //
@@ -130,15 +131,26 @@ namespace обучалка
         {
             airport newplane = new airport(n);
         }
+        static void center()
+        {
+            int command = Convert.ToInt32(Console.ReadLine());
 
+            switch (command)
+            {
+                case 1:
+                    newplane.startengine();
+
+            }
+        }
 
         static void Main(string[] args) //точка входа в программу
         {
             Console.WriteLine("Введите количество летательных средств:");
             int kol_planes = Convert.ToInt32(Console.ReadLine());
             StartProgramm(kol_planes);      //вызов метода стартпрограмм с передачей количества самолётов
-
-
+            
+            Console.WriteLine("Введите команду (1 - запуск двиг., 2 - остановка двиг., 3 - заправка, 4 - увелич. скорость, 5 - уменьшить скорость, 6 - увелич. высоту, 7 - уменьш. высоту). ");
+            center();
 
 
             //cl cl1 = new cl(n);         //создание экземпляра класса. тут мы используем конструктор с параметром
