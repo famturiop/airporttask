@@ -22,9 +22,9 @@ namespace обучалка
         int ind; //это индекс объекта. это временная переменная, которую можно удалить, если реализуешь иначе. но она пока для того, что бы вызов метода "респаун" не ругался.***
 
 
-        public airport(int startfuel)
+        public airport()
         {
-            fuel = startfuel;
+            fuel = 10;
             Console.WriteLine("Диспетчерская. Система управления самолетами.");
             
         }
@@ -88,7 +88,7 @@ namespace обучалка
                 {
                     height = 0;
                     Console.WriteLine("Самолет разбился.");
-                    Program.RespawnPlane(ind);   //передаём индекс объекта, который нужно перезаполнить******
+                    
                 }
                 else
                 {
@@ -106,32 +106,24 @@ namespace обучалка
         {
             engine = false;
             Console.WriteLine("Отключение двигателя.");
+            Program.center();
         }
     }
+    
+
     class Program  //базовый класс
     {
         //
         //коллекция Авиапарк объектов класса самолёт
         //
-        static void StartProgramm(int kol_planes)       //метод, создающий объекты самолёт и заносящий их в Авиапарк. принимаемый параметр = количеству самолётов в авиапарке
+        void StartProgramm()       //метод, создающий объекты самолёт и заносящий их в Авиапарк. принимаемый параметр = количеству самолётов в авиапарке
         {
-            for (int i = 0; i < kol_planes; i++)        //
-            {                                           //заполнение коллекции Авиапарк. точнее тут будет цикл, для заполнения. в принципе сам процесс создания одного элемента     
-                CreatePlane(i);                         //
-            }                                           //
+            
+            Console.WriteLine("Введите команду (1 - запуск двиг., 2 - остановка двиг., 3 - заправка, 4 - увелич. скорость, 5 - уменьшить скорость, 6 - увелич. высоту, 7 - уменьш. высоту). ");
+            center();
         }
-        static void RespawnPlane(int n)         //метод для респауна самолётов. вызывается при взрыве и тд. передаётся индекс объекта, который требуется заменить
-        {
-            CreatePlane(n);
-            //
-            //заполнение элемента
-            //
-        }
-        static void CreatePlane(int n)             //заполнение/вызов конструктора класса Самолёт
-        {
-            airport newplane = new airport(n);
-        }
-        static void center()
+        
+        void center()
         {
             int command = Convert.ToInt32(Console.ReadLine());
 
@@ -139,18 +131,28 @@ namespace обучалка
             {
                 case 1:
                     newplane.startengine();
+                    break;
+                case 2:
+                    newplane.stopengine();
+                    if (height > 0)
+                    {
+
+                    }
+                case 3:
+                    newplane.
 
             }
+            public airport newplane = new airport();
         }
 
         static void Main(string[] args) //точка входа в программу
         {
-            Console.WriteLine("Введите количество летательных средств:");
-            int kol_planes = Convert.ToInt32(Console.ReadLine());
-            StartProgramm(kol_planes);      //вызов метода стартпрограмм с передачей количества самолётов
             
-            Console.WriteLine("Введите команду (1 - запуск двиг., 2 - остановка двиг., 3 - заправка, 4 - увелич. скорость, 5 - уменьшить скорость, 6 - увелич. высоту, 7 - уменьш. высоту). ");
-            center();
+            
+            
+            StartProgramm();      //вызов метода стартпрограмм с передачей количества самолётов
+            
+            
 
 
             //cl cl1 = new cl(n);         //создание экземпляра класса. тут мы используем конструктор с параметром
